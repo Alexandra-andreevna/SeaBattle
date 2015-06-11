@@ -12,16 +12,21 @@ int main()
 	Player objPlayer;
 	objPlayer.put_ship();
 
-	bool end=false;
+	cout<<"START GAME"<<endl;
 
-	objField.end(end);
+	bool end;
 
-	while (end==false)
+	do
 	{
+		end=false;
 		objPlayer.move(1);
-		objPlayer.move(2);
-		objField.end(end);
-	};
-	cout<<"End of game";
-	system("pause");
+		end=objField.end_of_game(end);
+		if (end==false)
+		{
+			objPlayer.move(2);
+			end=objField.end_of_game(end);
+		};
+	}
+	while (end==false);
+	cout<<"THE END"<<endl;
 }
