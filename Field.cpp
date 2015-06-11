@@ -11,8 +11,6 @@ Field::Field()
 			{
 				field_1[i][j]=0;
 				field_2[i][j]=0;
-				field_copy_1[i][j]=0;
-				field_copy_2[i][j]=0;
 			}
 		};
 
@@ -21,69 +19,147 @@ void Field::show_field_for_player(int p)
 			if (p==1)
 			{
 				for (int i = 0; i<10; i++)
-					{
-						for (int j = 0; j<10; j++)
-							{
-								cout<<field_1[i][j];
-							};
-						cout<<" ";
-						for (int j = 0; j<10; j++)
-							{
-								cout<<field_copy_2[i][j];
-							};
-						cout<<endl;
-					};
-				cout<<endl;
+				{
+					for (int j = 0; j<10; j++)
+						cout<<field_1[i][j];
+					cout<<endl;
+				};
 			};
+			cout<<endl;
 
 			if (p==2)
 			{
 				for (int i = 0; i<10; i++)
-					{
-						for (int j = 0; j<10; j++)
-							{
-								cout<<field_2[i][j];
-							};
-						cout<<" ";
-						for (int j = 0; j<10; j++)
-							{
-								cout<<field_copy_1[i][j];
-							};
-						cout<<endl;
-					};
+				{
+					for (int j = 0; j<10; j++)
+						cout<<field_2[i][j];
+					cout<<endl;
+				};
 				cout<<endl;
 			};
 		};
 
-void Field::end(bool end)
+void Field::show_field_for_player_copy(int p)
 		{
-			int s1=0;
-			int s2=0;
-			for (int i=0; i<10; i++)
-				for (int j=0; j<10; j++)
+			if (p==1)
+			{
+				for (int i = 0; i<10; i++)
 				{
-				s1=s1+field_1[i][j];
-				s2=s2+field_2[i][j];
+					for (int j = 0; j<10; j++)
+						cout<<field_1_copy[i][j];
+					cout<<endl;
 				};
-			cout<<s1<<" "<<s2<<endl;
-			if ((s1==0)||(s2==0))
-				end=true;
-			cout<<end;
-		}
+			};
+			cout<<endl;
+
+			if (p==2)
+			{
+				for (int i = 0; i<10; i++)
+				{
+					for (int j = 0; j<10; j++)
+						cout<<field_2_copy[i][j];
+					cout<<endl;
+				};
+				cout<<endl;
+			};
+		};
 		
 void Field::put_1(int x, int y, int i)
 		{
 			field_1[x][y]=i;
 		};
-void Field::put_copy_1(int x, int y, int i)
-		{
-			field_copy_1[x][y]=i;
-		};
+
 void Field::put_2(int x, int y, int i)
 		{
 			field_2[x][y]=i;
 		};
-void Field::put_copy_2(int x, int y, int i)
+
+void Field::put_1_copy(int x, int y, int i)
 		{
-			field_copy_2[x][y]=i;
+			field_1_copy[x][y]=i;
 		};
+
+void Field::put_2_copy(int x, int y, int i)
+		{
+			field_2_copy[x][y]=i;
+		};
+
+bool Field::end_of_game(bool end)
+		{
+			int s1=0,s2=0;
+			for (int i=0; i<10; i++)
+				for (int j=0; j<10; j++)
+				{
+					s1=s1+field_1[i][j];
+					s2=s2+field_2[i][j];
+				};
+			return end;
+		};
+int Field::able(int can, int x, int y, int deck, int player)
+	{
+		
+		if (player==1)
+		{
+			can=0;
+			int k=0;
+
+			if ((x+deck>10)&&(y+deck>10))
+				can=3;
+			if ((x+deck>10)&&(y+deck<10))
+				can=2;
+			if ((x+deck<10)&&(y+deck>10))
+				can=1;
+
+			if (can==0)
+			{
+			for (int i=x-2; i<x+deck+1; i++)
+				for (int j=y-2; j<y+1; j++)
+				if (field_1[i][j]!=0)
+					k=k+1;
+			if (k!=0)
+				can=1;
+			k=0;
+			for (int i=y-2; i<y+deck+1; i++)
+				for (int j=x-2; j<x+1; j++)
+				if (field_1[j][i]!=0)
+					k=k+1;
+			if (k!=0)
+				can=can+2;
+			}
+			
+		}
+
+
+		if (player==2)
+		{
+			can=0;
+			int k=0;
+
+			if ((x+deck>10)&&(y+deck>10))
+				can=3;
+			if ((x+deck>10)&&(y+deck<10))
+				can=2;
+			if ((x+deck<10)&&(y+deck>10))
+				can=1;
+
+			if (can==0)
+			{
+			for (int i=x-2; i<x+deck+1; i++)
+				for (int j=y-2; j<y+1; j++)
+				if (field_2[i][j]!=0)
+					k=k+1;
+			if (k!=0)
+				can=1;
+			k=0;
+			for (int i=y-2; i<y+deck+1; i++)
+				for (int j=x-2; j<x+1; j++)
+				if (field_2[j][i]!=0)
+					k=k+1;
+			if (k!=0)
+				can=can+2;
+			}
+			
+		} 
+
+		return can;
+	};
