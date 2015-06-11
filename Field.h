@@ -7,21 +7,21 @@ class Field
 	protected:
 		int field_1[10][10];
 		int field_2[10][10];
-		int field_copy_1[10][10];
-		int field_copy_2[10][10];
-
+		int field_1_copy[10][10];
+		int field_2_copy[10][10];
 	public:
 		Field();
 
 		void show_field_for_player(int p);
-
-		void end(bool end);
+		void show_field_for_player_copy(int p);
 		
 		void put_1(int x, int y, int i);
-		void put_copy_1(int x, int y, int i);
 		void put_2(int x, int y, int i);
-		void put_copy_2(int x, int y, int i);
-		
-};
+		void put_1_copy(int x, int y, int i);
+		void put_2_copy(int x, int y, int i);
 
+		bool end_of_game(bool end);
+		int able(int can, int x, int y, int deck, int player);
+};
+ 
 #endif
