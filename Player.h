@@ -7,7 +7,8 @@ public:
 	Player()
 	{};
 	void put_ship();
-	void move(int p);
+	bool move(int p, bool end);
 };
  
 #endif
+
