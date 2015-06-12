@@ -10,9 +10,10 @@ Field objField;
 void Player::put_ship()
 {
 	int x,y,l,k=0;
+	int can=0;
 
 //PLAYER1
-
+	
 	cout<<"Player1"<<endl;
 
 	objField.show_field_for_player(1);
@@ -22,7 +23,7 @@ void Player::put_ship()
 //4 ПАЛУБНЫЙ
 
 	objField.show_field_for_player(1);
-	int can;
+	
 
 	cout<<"1-4"<<endl;
 
@@ -38,9 +39,9 @@ void Player::put_ship()
 	while (((x+3>10)&&(y+3>10))||(can>=3));
 
 	if (can==1)
-		l=2;
-	if (can==2)
 		l=1;
+	if (can==2)
+		l=2;
 
 	if (can==0)
 	{
@@ -51,8 +52,6 @@ void Player::put_ship()
 		}
 	while ((l!=1)&&(l!=2));
 	}
-
-	cout<<l<<endl;
 
 	if (l==1)
 		{
@@ -94,9 +93,9 @@ for (int i=0; i<2; i++)
 	while (((x+2>10)&&(y+2>10))||(can>=3));
 
 	if (can==1)
-		l=2;
-	if (can==2)
 		l=1;
+	if (can==2)
+		l=2;
 
 	if (can==0)
 	{
@@ -109,10 +108,6 @@ for (int i=0; i<2; i++)
 	}
 
 	can=0;
-
-	
-	cout<<l<<endl;
-
 
 	if (l==1)
 		{
@@ -168,9 +163,6 @@ for (int i=0; i<3; i++)
 		}
 	while ((l!=1)&&(l!=2));
 	}
-	
-	cout<<l<<endl;
-
 
 	if (l==1)
 		{
@@ -202,55 +194,24 @@ for (int i=0; i<4; i++)
 			objField.show_field_for_player(1);
 			cout<<4-i<<"-1"<<endl;
 			do
-		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
-			can=0;
-			can=objField.able(can,x,y,1,1);
-		if (can>=3)
-			cout<<"Can't put! Try again!"<<endl;
-		}
-	while (((x>10)&&(y>10))||(can>=3));
+			{
+				cout<<"Enter coordinates (x y): ";
+				cin>>x>>y;
+				can=0;
+				can=objField.able(can,x,y,1,1);
+				if (can>=3)
+					cout<<"Can't put! Try again!"<<endl;
+				}
+			while (((x>10)&&(y>10))||(can>=3));
 
-	if (can==1)
-		l=2;
-	if (can==2)
-		l=1;
-
-	if (can==0)
-	{
-	do
-		{
-			cout<<"Enter locaton (1-horizontal, 2-vertical): ";
-			cin>>l;
-		}
-	while ((l!=1)&&(l!=2));
-	}
-
-
-	cout<<l<<endl;
-
-	if (l==1)
-		{
 			for (int i=y-1; i<y; i++)
 				{
-						objField.put_1(x-1,i,1);
+					objField.put_1(x-1,i,1);
 				};
 			objField.show_field_for_player(1);
 			system("pause");
 			system("cls");
-		};
 		
-		if (l==2)
-		{
-			for (int i=x-1; i<x; i++)
-				{
-						objField.put_1(i,y-1,1);
-				};
-			objField.show_field_for_player(1);
-			system("pause");
-			system("cls");
-		}
 		}
 
 
@@ -268,7 +229,6 @@ system("pause");
 //4 ПАЛУБНЫЙ
 
 	objField.show_field_for_player(2);
-	int can;
 
 	cout<<"1-4"<<endl;
 
@@ -277,14 +237,14 @@ system("pause");
 			cout<<"Enter coordinates (x y): ";
 			cin>>x>>y;
 			can=0;
-			can=objField.able(can,x,y,3,2);
+			can=objField.able(can,x,y,4,2);
 			if (can>=3)
 				cout<<"Can't put! Try again!"<<endl;
 		}
 	while (((x+3>10)&&(y+3>10))||(can>=3));
 
 	if (can==1)
-		l=2;
+		l=1;
 	if (can==2)
 		l=1;
 
@@ -298,15 +258,13 @@ system("pause");
 	while ((l!=1)&&(l!=2));
 	}
 
-	cout<<l<<endl;
-
 	if (l==1)
 		{
 			for (int i=y-1; i<y+3; i++)
 				{
 						objField.put_2(x-1,i,4);
 				};
-			objField.show_field_for_player(1);
+			objField.show_field_for_player(2);
 			system("pause");
 			system("cls");
 		};
@@ -340,9 +298,9 @@ for (int i=0; i<2; i++)
 	while (((x+2>10)&&(y+2>10))||(can>=3));
 
 	if (can==1)
-		l=2;
-	if (can==2)
 		l=1;
+	if (can==2)
+		l=2;
 
 	if (can==0)
 	{
@@ -355,10 +313,6 @@ for (int i=0; i<2; i++)
 	}
 
 	can=0;
-
-	
-	cout<<l<<endl;
-
 
 	if (l==1)
 		{
@@ -414,8 +368,6 @@ for (int i=0; i<3; i++)
 		}
 	while ((l!=1)&&(l!=2));
 	}
-	
-	cout<<l<<endl;
 
 
 	if (l==1)
@@ -448,36 +400,16 @@ for (int i=0; i<4; i++)
 			objField.show_field_for_player(2);
 			cout<<4-i<<"-1"<<endl;
 			do
-		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
-			can=0;
-			can=objField.able(can,x,y,1,2);
-		if (can>=3)
-			cout<<"Can't put! Try again!"<<endl;
-		}
-	while (((x>10)&&(y>10))||(can>=3));
+			{
+				cout<<"Enter coordinates (x y): ";
+				cin>>x>>y;
+				can=0;
+				can=objField.able(can,x,y,1,2);
+				if (can>=3)
+					cout<<"Can't put! Try again!"<<endl;
+			}
+			while (((x>10)&&(y>10))||(can>=3));
 
-	if (can==1)
-		l=2;
-	if (can==2)
-		l=1;
-
-	if (can==0)
-	{
-	do
-		{
-			cout<<"Enter locaton (1-horizontal, 2-vertical): ";
-			cin>>l;
-		}
-	while ((l!=1)&&(l!=2));
-	}
-
-
-	cout<<l<<endl;
-
-	if (l==1)
-		{
 			for (int i=y-1; i<y; i++)
 				{
 						objField.put_2(x-1,i,1);
@@ -485,27 +417,18 @@ for (int i=0; i<4; i++)
 			objField.show_field_for_player(2);
 			system("pause");
 			system("cls");
-		};
-		
-		if (l==2)
-		{
-			for (int i=x-1; i<x; i++)
-				{
-						objField.put_2(i,y-1,1);
-				};
-			objField.show_field_for_player(2);
-			system("pause");
-			system("cls");
-		}
 		}
 
 }
 
-void Player::move(int p)
+bool Player::move(int p, bool end)
 {
 	int x,y;
+	bool kill=false;
 	if (p==1)
 	{
+		do
+		{
 		cout<<"Player 1"<<endl;
 		system("pause");
 		objField.show_field_for_player(1);
@@ -525,10 +448,20 @@ void Player::move(int p)
 		objField.show_field_for_player_copy(1);
 		system("pause");
 		system("cls");
+		kill=objField.kill(kill,x,y,1);
+		if (kill==true)
+			cout<<"HIT! Move again!"<<endl;
+		}
+		while (kill==true);
+		end=objField.end_of_game(end);
 	}
+
+	kill=false;
 
 	if (p==2)
 	{
+		do
+		{
 		cout<<"Player 2"<<endl;
 		system("pause");
 		objField.show_field_for_player(2);
@@ -548,7 +481,13 @@ void Player::move(int p)
 		objField.show_field_for_player_copy(2);
 		system("pause");
 		system("cls");
+		kill=objField.kill(kill,x,y,2);
+		if (kill==true)
+			cout<<"HIT! Move again!"<<endl;
+		}
+		while (kill==true);
+		end=objField.end_of_game(end);
 	}
+
+	return end;
 }
-
-
