@@ -14,19 +14,17 @@ int main()
 
 	cout<<"START GAME"<<endl;
 
-	bool end;
+	bool end=false;
 
 	do
 	{
-		end=false;
-		objPlayer.move(1);
-		end=objField.end_of_game(end);
+		objPlayer.move(1, end);
 		if (end==false)
 		{
-			objPlayer.move(2);
-			end=objField.end_of_game(end);
+			objPlayer.move(2,end);
 		};
 	}
 	while (end==false);
 	cout<<"THE END"<<endl;
+	system("pause");
 }
