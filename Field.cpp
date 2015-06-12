@@ -86,15 +86,39 @@ void Field::put_2_copy(int x, int y, int i)
 
 bool Field::end_of_game(bool end)
 		{
+			end=false;
 			int s1=0,s2=0;
 			for (int i=0; i<10; i++)
 				for (int j=0; j<10; j++)
 				{
-					s1=s1+field_1[i][j];
-					s2=s2+field_2[i][j];
+					s1+=field_1[i][j];
+					s2+=field_2[i][j];
 				};
+			if ((s1==0)||(s2==0))
+				end=true;
 			return end;
 		};
+
+bool Field::kill(bool kill, int x, int y, int p)
+{
+	kill=false;
+
+	if (p==1)
+	{
+		if (field_2[x-1][y-1]!=0)
+			kill=true;
+	}
+
+	if (p==2)
+	{
+		if (field_1[x-1][y-1]!=0)
+			kill=true;
+	}
+
+	return kill;
+
+};
+
 int Field::able(int can, int x, int y, int deck, int player)
 	{
 		
@@ -103,7 +127,7 @@ int Field::able(int can, int x, int y, int deck, int player)
 			can=0;
 			int k=0;
 
-			if ((x+deck>10)&&(y+deck>10))
+			if ((x+deck-1>10)&&(y+deck-1>10))
 				can=3;
 			if ((x+deck>10)&&(y+deck<10))
 				can=2;
@@ -163,3 +187,4 @@ int Field::able(int can, int x, int y, int deck, int player)
 
 		return can;
 	};
+
