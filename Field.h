@@ -21,6 +21,7 @@ class Field
 		void put_2_copy(int x, int y, int i);
 
 		bool end_of_game(bool end);
+		bool kill(bool kill, int x, int y, int p);
 		int able(int can, int x, int y, int deck, int player);
 };
  
