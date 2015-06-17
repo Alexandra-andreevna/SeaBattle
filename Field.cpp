@@ -136,17 +136,90 @@ int Field::able(int can, int x, int y, int deck, int player)
 
 			if (can==0)
 			{
-			for (int i=x-2; i<x+deck+1; i++)
-				for (int j=y-2; j<y+1; j++)
-				if (field_1[i][j]!=0)
-					k=k+1;
+			if ((x==1)&&(y==1))
+				for (int i=x-1; i<x+deck+1; i++)
+					for (int j=y-1; i<y+1; i++)
+						if (field_1[i][j]!=0)
+							k=k+1;
+			if ((x==1)&&(y!=1))
+				for (int i=x-1; i<x+deck+1; i++)
+					for (int j=y-2; i<y+1; i++)
+						if (field_1[i][j]!=0)
+							k=k+1;
+			if ((x!=1)&&(y==1))
+				{
+				for (int i=x-1; i<x+deck+1; i++)
+					for (int j=y-2; i<y+1; i++)
+						if (field_1[i][j]!=0)
+							k=k+1;
+				}
+			if ((x!=1)&&(y!=1)) 
+				{
+				if ((x+deck==10)&&(y+deck==10))
+					for (int i=x-2; i<x+deck; i++)
+						for (int j=y-2; j<y; j++)
+							if (field_1[i][j]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck==10))
+					for (int i=x-2; i<x+deck+1; i++)
+						for (int j=y-2; j<y; j++)
+							if (field_1[i][j]!=0)
+								k=k+1;
+				if ((x+deck==10)&&(y+deck!=10))
+					for (int i=x-2; i<x+deck; i++)
+						for (int j=y-2; j<y+1; j++)
+							if (field_1[i][j]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck!=10))
+					for (int i=x-2; i<x+deck+1; i++)
+						for (int j=y-2; j<y+1; j++)
+							if (field_1[i][j]!=0)
+								k=k+1;
+				}
 			if (k!=0)
 				can=1;
 			k=0;
-			for (int i=y-2; i<y+deck+1; i++)
-				for (int j=x-2; j<x+1; j++)
-				if (field_1[j][i]!=0)
-					k=k+1;
+
+			if ((x==1)&&(y==1))
+				for (int i=y-1; i<y+deck+1; i++)
+					for (int j=x-1; i<x+1; i++)
+						if (field_1[j][i]!=0)
+							k=k+1;
+			if ((x==1)&&(y!=1))
+				for (int i=y-1; i<y+deck+1; i++)
+					for (int j=x-2; i<x+1; i++)
+						if (field_1[j][i]!=0)
+							k=k+1;
+			if ((x!=1)&&(y==1))
+				{
+				for (int i=y-1; i<y+deck+1; i++)
+					for (int j=x-2; i<x+1; i++)
+						if (field_1[j][i]!=0)
+							k=k+1;
+				}
+			if ((x!=1)&&(y!=1)) 
+				{
+				if ((x+deck==10)&&(y+deck==10))
+					for (int i=y-2; i<y+deck; i++)
+						for (int j=x-2; j<x; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck==10))
+					for (int i=y-2; i<y+deck+1; i++)
+						for (int j=x-2; j<x; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				if ((x+deck==10)&&(y+deck!=10))
+					for (int i=y-2; i<y+deck; i++)
+						for (int j=x-2; j<x+1; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck!=10))
+					for (int i=y-2; i<y+deck+1; i++)
+						for (int j=x-2; j<x+1; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				};
 			if (k!=0)
 				can=can+2;
 			}
@@ -159,7 +232,7 @@ int Field::able(int can, int x, int y, int deck, int player)
 			can=0;
 			int k=0;
 
-			if ((x+deck>10)&&(y+deck>10))
+			if ((x+deck-1>10)&&(y+deck-1>10))
 				can=3;
 			if ((x+deck>10)&&(y+deck<10))
 				can=2;
@@ -168,23 +241,95 @@ int Field::able(int can, int x, int y, int deck, int player)
 
 			if (can==0)
 			{
-			for (int i=x-2; i<x+deck+1; i++)
-				for (int j=y-2; j<y+1; j++)
-				if (field_2[i][j]!=0)
-					k=k+1;
+			if ((x==1)&&(y==1))
+				for (int i=x-1; i<x+deck+1; i++)
+					for (int j=y-1; i<y+1; i++)
+						if (field_2[i][j]!=0)
+							k=k+1;
+			if ((x==1)&&(y!=1))
+				for (int i=x-1; i<x+deck+1; i++)
+					for (int j=y-2; i<y+1; i++)
+						if (field_2[i][j]!=0)
+							k=k+1;
+			if ((x!=1)&&(y==1))
+				{
+				for (int i=x-1; i<x+deck+1; i++)
+					for (int j=y-2; i<y+1; i++)
+						if (field_2[i][j]!=0)
+							k=k+1;
+				}
+			if ((x!=1)&&(y!=1)) 
+				{
+				if ((x+deck==10)&&(y+deck==10))
+					for (int i=x-2; i<x+deck; i++)
+						for (int j=y-2; j<y; j++)
+							if (field_2[i][j]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck==10))
+					for (int i=x-2; i<x+deck+1; i++)
+						for (int j=y-2; j<y; j++)
+							if (field_2[i][j]!=0)
+								k=k+1;
+				if ((x+deck==10)&&(y+deck!=10))
+					for (int i=x-2; i<x+deck; i++)
+						for (int j=y-2; j<y+1; j++)
+							if (field_2[i][j]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck!=10))
+					for (int i=x-2; i<x+deck+1; i++)
+						for (int j=y-2; j<y+1; j++)
+							if (field_2[i][j]!=0)
+								k=k+1;
+				}
 			if (k!=0)
 				can=1;
 			k=0;
-			for (int i=y-2; i<y+deck+1; i++)
-				for (int j=x-2; j<x+1; j++)
-				if (field_2[j][i]!=0)
-					k=k+1;
+
+			if ((x==1)&&(y==1))
+				for (int i=y-1; i<y+deck+1; i++)
+					for (int j=x-1; i<x+1; i++)
+						if (field_1[j][i]!=0)
+							k=k+1;
+			if ((x==1)&&(y!=1))
+				for (int i=y-1; i<y+deck+1; i++)
+					for (int j=x-2; i<x+1; i++)
+						if (field_1[j][i]!=0)
+							k=k+1;
+			if ((x!=1)&&(y==1))
+				{
+				for (int i=y-1; i<y+deck+1; i++)
+					for (int j=x-2; i<x+1; i++)
+						if (field_1[j][i]!=0)
+							k=k+1;
+				}
+			if ((x!=1)&&(y!=1)) 
+				{
+				if ((x+deck==10)&&(y+deck==10))
+					for (int i=y-2; i<y+deck; i++)
+						for (int j=x-2; j<x; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck==10))
+					for (int i=y-2; i<y+deck+1; i++)
+						for (int j=x-2; j<x; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				if ((x+deck==10)&&(y+deck!=10))
+					for (int i=y-2; i<y+deck; i++)
+						for (int j=x-2; j<x+1; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				if ((x+deck!=10)&&(y+deck!=10))
+					for (int i=y-2; i<y+deck+1; i++)
+						for (int j=x-2; j<x+1; j++)
+							if (field_1[j][i]!=0)
+								k=k+1;
+				};
 			if (k!=0)
 				can=can+2;
 			}
 			
-		} 
+		}
 
 		return can;
 	};
-
