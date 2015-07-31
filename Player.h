@@ -6,6 +6,7 @@ class Player
 public:
 	Player()
 	{};
+	
 	void put_ship();
 	bool move(int p, bool end);
 };
