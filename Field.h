@@ -22,6 +22,7 @@ class Field
 
 		bool end_of_game(bool end);
 		bool kill(bool kill, int x, int y, int p);
+		int able_hit(int can, int x, int y, int player);
 		int able(int can, int x, int y, int deck, int player);
 };
  
