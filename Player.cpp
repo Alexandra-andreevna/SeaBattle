@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cctype>
+#include <cstdlib>
 
 using namespace std;
 
@@ -9,8 +11,10 @@ Field objField;
 
 void Player::put_ship()
 {
-	int x,y,l,k=0;
+	int x=0,y=0,l,k=0,n;
 	int can=0;
+	char str_x[]="x";
+	char str_y[]="y";
 
 //PLAYER1
 	
@@ -29,14 +33,31 @@ void Player::put_ship()
 
 	do
 		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
+			
+			do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 			can=0;
-			can=objField.able(can,x,y,3,1);
-			if (can>=3)
+			can=objField.able(can,x-1,y-1,4,1);
+			if ((x<1)||(x>10)||(y>10)||(y<1)||(can>=3))
 				cout<<"Can't put! Try again!"<<endl;
 		}
-	while (((x+3>10)&&(y+3>10))||(can>=3));
+	while ((x<1)||(x>10)||(y>10)||(y<1)||(can>=3));
 
 	if (can==1)
 		l=1;
@@ -83,14 +104,30 @@ for (int i=0; i<2; i++)
 			cout<<2-i<<"-3"<<endl;
 			do
 		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
+			do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 			can=0;
-			can=objField.able(can,x,y,3,1);
-			if (can>=3)
+			can=objField.able(can,x-1,y-1,3,1);
+			if ((((x<1)||(x>10))||((y>10)||(y<1)))||(can>=3))
 				cout<<"Can't put! Try again!"<<endl;
 		}
-	while (((x+2>10)&&(y+2>10))||(can>=3));
+	while ((((x<1)||(x+2>10))||((y+2>10)||(y<1)))||(can>=3));
 
 	if (can==1)
 		l=1;
@@ -140,19 +177,35 @@ for (int i=0; i<3; i++)
 			cout<<3-i<<"-2"<<endl;
 			do
 		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
+			do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 			can=0;
-			can=objField.able(can,x,y,2,1);
-			if (can>=3)
+			can=objField.able(can,x-1,y-1,2,1);
+			if ((((x<1)||(x>10))||((y>10)||(y<1)))||(can>=3))
 				cout<<"Can't put! Try again!"<<endl;
 		}
-	while (((x+1>10)&&(y+1>10))||(can>=3));
+	while ((((x<1)||(x+1>10))||((y+1>10)||(y<1)))||(can>=3));
 
 	if (can==1)
-		l=2;
-	if (can==2)
 		l=1;
+	if (can==2)
+		l=2;
 
 	if (can==0)
 	{
@@ -195,14 +248,30 @@ for (int i=0; i<4; i++)
 			cout<<4-i<<"-1"<<endl;
 			do
 			{
-				cout<<"Enter coordinates (x y): ";
-				cin>>x>>y;
+				do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 				can=0;
-				can=objField.able(can,x,y,1,1);
-				if (can>=3)
+				can=objField.able(can,x-1,y-1,1,1);
+				if ((((x<1)||(x>10))||((y>10)||(y<1)))||(can>=3))
 					cout<<"Can't put! Try again!"<<endl;
 				}
-			while (((x>10)&&(y>10))||(can>=3));
+			while ((((x<1)||(x>10))||((y>10)||(y<1)))||(can>=3));
 
 			for (int i=y-1; i<y; i++)
 				{
@@ -234,19 +303,35 @@ system("pause");
 
 	do
 		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
+			do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 			can=0;
-			can=objField.able(can,x,y,4,2);
-			if (can>=3)
+			can=objField.able(can,x-1,y-1,4,2);
+			if ((((x<1)||(x+3>10))||((y+3>10)||(y<1)))||(can>=3))
 				cout<<"Can't put! Try again!"<<endl;
 		}
-	while (((x+3>10)&&(y+3>10))||(can>=3));
+	while ((((x<1)||(x+3>10))||((y+3>10)||(y<1)))||(can>=3));
 
 	if (can==1)
 		l=1;
 	if (can==2)
-		l=1;
+		l=2;
 
 	if (can==0)
 	{
@@ -288,14 +373,30 @@ for (int i=0; i<2; i++)
 			cout<<2-i<<"-3"<<endl;
 			do
 		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
+			do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 			can=0;
-			can=objField.able(can,x,y,3,2);
-			if (can>=3)
+			can=objField.able(can,x-1,y-1,3,2);
+			if ((((x<1)||(x+2>10))||((y+2>10)||(y<1)))||(can>=3))
 				cout<<"Can't put! Try again!"<<endl;
 		}
-	while (((x+2>10)&&(y+2>10))||(can>=3));
+	while ((((x<1)||(x+2>10))||((y+2>10)||(y<1)))||(can>=3));
 
 	if (can==1)
 		l=1;
@@ -345,19 +446,35 @@ for (int i=0; i<3; i++)
 			cout<<3-i<<"-2"<<endl;
 			do
 		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
+			do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 			can=0;
-			can=objField.able(can,x,y,2,2);
-			if (can>=3)
+			can=objField.able(can,x-1,y-1,2,2);
+			if ((((x<1)||(x+1>10))||((y+1>10)||(y<1)))||(can>=3))
 				cout<<"Can't put! Try again!"<<endl;
 		}
-	while (((x+1>10)&&(y+1>10))||(can>=3));
+	while ((((x<1)||(x+1>10))||((y+1>10)||(y<1)))||(can>=3));
 
 	if (can==1)
-		l=2;
-	if (can==2)
 		l=1;
+	if (can==2)
+		l=2;
 
 	if (can==0)
 	{
@@ -401,14 +518,30 @@ for (int i=0; i<4; i++)
 			cout<<4-i<<"-1"<<endl;
 			do
 			{
-				cout<<"Enter coordinates (x y): ";
-				cin>>x>>y;
+				do
+			{
+				cout<<"Enter coordinates (x y)"<<endl;
+				cout<<"x: ";
+				cin>>str_x;
+				cout<<"y: ";
+				cin>>str_y;
+
+				if (!cin.fail())
+				{
+					x=atoi(str_x);
+					y=atoi(str_y);
+					n=1;
+				}
+			}
+			while (n==0);
+			
+			n=0;
 				can=0;
-				can=objField.able(can,x,y,1,2);
-				if (can>=3)
+				can=objField.able(can,x-1,y-1,1,2);
+				if ((((x<1)||(x>10))||((y>10)||(y<1)))||(can>=3))
 					cout<<"Can't put! Try again!"<<endl;
 			}
-			while (((x>10)&&(y>10))||(can>=3));
+			while ((((x<1)||(x>10))&&((y>10)||(y<1)))||(can>=3));
 
 			for (int i=y-1; i<y; i++)
 				{
@@ -423,34 +556,49 @@ for (int i=0; i<4; i++)
 
 bool Player::move(int p, bool end)
 {
-	int x,y;
+	int x,y,can;
 	bool kill=false;
 	if (p==1)
 	{
 		do
 		{
+
+		//PLAYER1
 		cout<<"Player 1"<<endl;
 		system("pause");
 		objField.show_field_for_player(1);
 		cout<<endl;
 		objField.show_field_for_player_copy(1);
 		do
-		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
-		}
-		while ((x>10)&&(y>10));
-		objField.put_2(x-1,y-1,0);
-		objField.put_1_copy(x-1,y-1,1);
+			{
+				cout<<"Enter coordinates (x y): ";
+				cin>>x>>y;
+				can=0;
+				can=objField.able_hit(can,x,y,1);
+				if ((((x<1)||(x>10))&&((y>10)||(y<1)))||(can==0))
+					cout<<"Can't hit! Try again!"<<endl;
+			}
+		while ((((x<1)||(x>10))&&((y>10)||(y<1)))||(can==0));
 		system("cls");
 
 		objField.show_field_for_player(1);
 		objField.show_field_for_player_copy(1);
-		system("pause");
-		system("cls");
 		kill=objField.kill(kill,x,y,1);
 		if (kill==true)
+		{
 			cout<<"HIT! Move again!"<<endl;
+			objField.put_2(x-1,y-1,5);
+			objField.put_1_copy(x-1,y-1,5);
+		}
+		else
+		{
+			objField.put_2(x-1,y-1,6);
+			objField.put_1_copy(x-1,y-1,6);
+		}
+		objField.show_field_for_player(1);
+		objField.show_field_for_player_copy(1);
+		system("pause");
+		system("cls");		
 		}
 		while (kill==true);
 		end=objField.end_of_game(end);
@@ -462,28 +610,43 @@ bool Player::move(int p, bool end)
 	{
 		do
 		{
+
+		//PLAYER2
 		cout<<"Player 2"<<endl;
 		system("pause");
 		objField.show_field_for_player(2);
 		cout<<endl;
 		objField.show_field_for_player_copy(2);
 		do
-		{
-			cout<<"Enter coordinates (x y): ";
-			cin>>x>>y;
-		}
-		while ((x>10)&&(y>10));
-		objField.put_2(x-1,y-1,0);
-		objField.put_2_copy(x-1,y-1,1);
+			{
+				cout<<"Enter coordinates (x y): ";
+				cin>>x>>y;
+				can=0;
+				can=objField.able_hit(can,x,y,2);
+				if ((((x<1)||(x>10))&&((y>10)||(y<1)))||(can==0))
+					cout<<"Can't hit! Try again!"<<endl;
+			}
+		while ((((x<1)||(x>10))&&((y>10)||(y<1)))||(can==0));
 		system("cls");
 
 		objField.show_field_for_player(2);
 		objField.show_field_for_player_copy(2);
-		system("pause");
-		system("cls");
 		kill=objField.kill(kill,x,y,2);
 		if (kill==true)
+		{
 			cout<<"HIT! Move again!"<<endl;
+			objField.put_1(x-1,y-1,5);
+			objField.put_2_copy(x-1,y-1,5);
+		}
+		else
+		{
+			objField.put_1(x-1,y-1,6);
+			objField.put_2_copy(x-1,y-1,6);
+		}
+		objField.show_field_for_player(2);
+		objField.show_field_for_player_copy(2);
+		system("pause");
+		system("cls");		
 		}
 		while (kill==true);
 		end=objField.end_of_game(end);
