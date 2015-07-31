@@ -18,10 +18,10 @@ int main()
 
 	do
 	{
-		objPlayer.move(1, end);
+		end=objPlayer.move(1, end);
 		if (end==false)
 		{
-			objPlayer.move(2,end);
+			end=objPlayer.move(2,end);
 		};
 	}
 	while (end==false);
